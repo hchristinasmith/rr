@@ -1,0 +1,37 @@
+{
+  "manifest_version": 3,
+  "name": "Block Reels & Stories",
+  "version": "1.0",
+  "description": "Block Reels and Stories from social media sites.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://www.facebook.com/*",
+        "https://www.instagram.com/*",
+        "https://www.youtube.com/*",
+        "https://www.snapchat.com/*"
+      ],
+      "js": ["content.js"]
+    }
+  ],
+  "host_permissions": [
+    "https://www.facebook.com/*",
+    "https://www.instagram.com/*",
+    "https://www.youtube.com/*",
+    "https://www.snapchat.com/*"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["popup/assets/*.svg"],
+    "matches": ["<all_urls>"]
+  }]
+}

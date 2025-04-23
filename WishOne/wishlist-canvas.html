@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist Canvas - Wish One</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Libre+Franklin:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/wishlist-canvas.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo">
+                <a href="home.html">
+                    <h1><img src="images/wishone-logo.svg" alt="Wish One Logo" class="logo-icon"></h1>
+                </a>
+            </div>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Overview</a></li>
+                    <li><a href="wishlist-canvas.html" class="active">Wishboard</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="social.html">Wishing Well</a></li>
+                </ul>
+            </nav>
+            <div class="user-menu">
+                <div class="user-dropdown">
+                    <button class="user-btn"><i class="fas fa-user-circle"></i></button>
+                    <div class="dropdown-menu">
+                        <a href="#profile"><i class="fas fa-user"></i> My Profile</a>
+                        <a href="#settings"><i class="fas fa-cog"></i> Settings</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="home.html" class="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="wishlist-canvas-section">
+            <div class="container">
+                <div class="page-header">
+                    <h2>Wishlist Canvas</h2>
+                    <p class="page-description">Drag items to the canvas and create your own wishlist groups</p>
+                    <div class="page-actions">
+                        <button id="create-group-btn" class="btn secondary-btn"><i class="fas fa-object-group"></i> Create Group</button>
+                        <button id="clear-canvas-btn" class="btn text-btn"><i class="fas fa-trash-alt"></i> Clear Canvas</button>
+                    </div>
+                </div>
+
+                <div class="wishlist-workspace">
+                    <!-- Canvas Area (Left Side) -->
+                    <div class="canvas-container">
+                        <div class="canvas-header">
+                            <h3>Canvas</h3>
+                            <div class="canvas-tools">
+                                <button class="tool-btn" title="Zoom In"><i class="fas fa-search-plus"></i></button>
+                                <button class="tool-btn" title="Zoom Out"><i class="fas fa-search-minus"></i></button>
+                                <button class="tool-btn" title="Reset View"><i class="fas fa-sync-alt"></i></button>
+                            </div>
+                        </div>
+                        <div id="wishlist-canvas" class="canvas">
+                            <!-- Canvas content will be added dynamically -->
+                            <div class="canvas-placeholder">
+                                <i class="fas fa-arrow-right"></i>
+                                <p>Drag items here to start creating your wishlist</p>
+                            </div>
+                        </div>
+                        <div class="canvas-footer">
+                            <div class="total-container">
+                                <span>Canvas Total:</span>
+                                <span id="canvas-total" class="total-amount">$0.00</span>
+                            </div>
+                            <div class="selection-container">
+                                <span>Selection:</span>
+                                <span id="selection-total" class="total-amount">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Items Panel (Right Side) -->
+                    <div class="items-panel">
+                        <div class="panel-header">
+                            <h3>Wishlist Items</h3>
+                            <div class="search-container">
+                                <input type="text" id="search-items" placeholder="Search items...">
+                                <i class="fas fa-search"></i>
+                            </div>
+                        </div>
+                        <div class="items-filter">
+                            <button class="filter-btn active" data-filter="all">All</button>
+                            <button class="filter-btn" data-filter="clothing">Clothing</button>
+                            <button class="filter-btn" data-filter="accessories">Accessories</button>
+                            <button class="filter-btn" data-filter="electronics">Electronics</button>
+                        </div>
+                        <div class="items-list" id="draggable-items">
+                            <!-- Clothing Items -->
+                            <div class="wishlist-item" draggable="true" data-id="item1" data-category="clothing" data-price="350">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Leather Jacket</h4>
+                                    <p class="item-price">$350.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+                            <div class="wishlist-item" draggable="true" data-id="item2" data-category="clothing" data-price="89.99">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-tshirt"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Summer Dress</h4>
+                                    <p class="item-price">$89.99</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+                            <div class="wishlist-item" draggable="true" data-id="item3" data-category="clothing" data-price="120">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-shoe-prints"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Running Shoes</h4>
+                                    <p class="item-price">$120.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+
+                            <!-- Accessories Items -->
+                            <div class="wishlist-item" draggable="true" data-id="item4" data-category="accessories" data-price="199">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Silver Watch</h4>
+                                    <p class="item-price">$199.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+                            <div class="wishlist-item" draggable="true" data-id="item5" data-category="accessories" data-price="150">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Leather Bag</h4>
+                                    <p class="item-price">$150.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+
+                            <!-- Electronics Items -->
+                            <div class="wishlist-item" draggable="true" data-id="item6" data-category="electronics" data-price="249">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-headphones"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Wireless Headphones</h4>
+                                    <p class="item-price">$249.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+                            <div class="wishlist-item" draggable="true" data-id="item7" data-category="electronics" data-price="499">
+                                <div class="item-image" style="background-color: #f0f0f0;">
+                                    <i class="fas fa-tablet-alt"></i>
+                                </div>
+                                <div class="item-details">
+                                    <h4 class="item-name">Tablet</h4>
+                                    <p class="item-price">$499.00</p>
+                                </div>
+                                <div class="item-drag-handle">
+                                    <i class="fas fa-grip-lines"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <button id="add-item-btn" class="btn primary-btn"><i class="fas fa-plus"></i> Add New Item</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Wish One. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Load our data store and item manager first -->
+    <script src="js/data-store.js"></script>
+    <script src="js/item-manager.js"></script>
+    <script src="js/wishlist-canvas.js"></script>
+    
+    <!-- Include the item modal component -->
+    <div id="item-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add New Item</h3>
+                <button id="close-item-modal" class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="item-form">
+                    <div class="form-group">
+                        <label for="item-name">Item Name*</label>
+                        <input type="text" id="item-name" name="item-name" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-price">Price*</label>
+                        <div class="price-input">
+                            <span class="currency-symbol">$</span>
+                            <input type="number" id="item-price" name="item-price" min="0" step="0.01" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label for="item-category">Category*</label>
+                            <select id="item-category" name="item-category" required>
+                                <option value="">Select Category</option>
+                                <option value="tech">Technology</option>
+                                <option value="clothing">Clothing</option>
+                                <option value="home">Home</option>
+                                <option value="beauty">Beauty</option>
+                                <option value="fitness">Fitness</option>
+                                <option value="travel">Travel</option>
+                                <option value="gifts">Gifts</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group half">
+                            <label for="item-priority">Priority*</label>
+                            <select id="item-priority" name="item-priority" required>
+                                <option value="">Select Priority</option>
+                                <option value="high">High</option>
+                                <option value="medium">Medium</option>
+                                <option value="low">Low</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-link">Product Link</label>
+                        <input type="url" id="item-link" name="item-link" placeholder="https://...">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-image">Image URL</label>
+                        <input type="url" id="item-image" name="item-image" placeholder="https://...">
+                        <div class="image-preview-container">
+                            <div id="image-preview" class="image-preview"></div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="item-notes">Notes</label>
+                        <textarea id="item-notes" name="item-notes" rows="3" placeholder="Why do you want this item?"></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" id="cancel-item" class="btn secondary-btn">Cancel</button>
+                        <button type="submit" class="btn primary-btn">Add Item</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
