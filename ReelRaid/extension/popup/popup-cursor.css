@@ -1,0 +1,23 @@
+/* Custom cursor styles */
+.custom-cursor {
+  position: fixed;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  z-index: 9999;
+  background-image: url('assets/logo-icon.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+body {
+  cursor: none !important;
+}
+
+/* Hide cursor on interactive elements */
+a, button, input, select, .platform-card {
+  cursor: none !important;
+}

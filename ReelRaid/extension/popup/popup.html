@@ -1,0 +1,117 @@
+<!-- popup.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNREEL!</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Lilita+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="popup.css">
+  <link rel="stylesheet" href="popup-cursor.css">
+</head>
+<body>
+  <div class="popup-container">
+    <div class="header">
+      <div class="header-content">
+        <h3 class="tagline">UNREEL!</h3>
+      </div>
+    </div>
+    
+    <div class="content-wrapper">
+      <div class="settings-section">
+        <form id="settingsForm">
+          <div class="platform-grid">
+            <div class="platform-wrapper" id="facebook-wrapper">
+              <label class="platform-card" for="facebook">
+                <input type="checkbox" id="facebook">
+                <div class="platform-icon">
+                  <img src="assets/facebook.svg" alt="Facebook" class="icon">
+                </div>
+                <span class="platform-name">Facebook</span>
+              </label>
+              
+              <div class="platform-details" id="facebook-details">
+                <div class="details-options">
+                  <label class="option-item">
+                    <input type="checkbox" id="facebook-stories" checked>
+                    <span>Stories</span>
+                  </label>
+                  <label class="option-item">
+                    <input type="checkbox" id="facebook-reels" checked>
+                    <span>Reels</span>
+                  </label>
+                </div>
+                <button class="details-done" id="facebook-done">Done</button>
+              </div>
+            </div>
+            
+            <div class="platform-wrapper" id="instagram-wrapper">
+              <label class="platform-card" for="instagram">
+                <input type="checkbox" id="instagram">
+                <div class="platform-icon">
+                  <img src="assets/instagram.svg" alt="Instagram" class="icon">
+                </div>
+                <span class="platform-name">Instagram</span>
+              </label>
+              
+              <div class="platform-details" id="instagram-details">
+                <div class="details-options">
+                  <label class="option-item">
+                    <input type="checkbox" id="instagram-stories" checked>
+                    <span>Stories</span>
+                  </label>
+                  <label class="option-item">
+                    <input type="checkbox" id="instagram-reels" checked>
+                    <span>Reels</span>
+                  </label>
+                </div>
+                <button class="details-done" id="instagram-done">Done</button>
+              </div>
+            </div>
+            
+            <label class="platform-card" for="youtube">
+              <input type="checkbox" id="youtube">
+              <div class="platform-icon">
+                <img src="assets/youtube.svg" alt="YouTube" class="icon">
+              </div>
+              <span class="platform-name">YouTube</span>
+            </label>
+            
+            <div class="platform-wrapper" id="snapchat-wrapper">
+              <label class="platform-card" for="snapchat">
+                <input type="checkbox" id="snapchat">
+                <div class="platform-icon">
+                  <img src="assets/snapchat.svg" alt="Snapchat" class="icon">
+                </div>
+                <span class="platform-name">Snapchat</span>
+              </label>
+              
+              <div class="platform-details" id="snapchat-details">
+                <div class="details-options">
+                  <label class="option-item">
+                    <input type="checkbox" id="snapchat-stories" checked>
+                    <span>Stories</span>
+                  </label>
+                  <label class="option-item">
+                    <input type="checkbox" id="snapchat-spotlight" checked>
+                    <span>Spotlight</span>
+                  </label>
+                </div>
+                <button class="details-done" id="snapchat-done">Done</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Footer and divider removed -->
+      </div>
+    </div>
+  </div>
+  <script src="popup.js"></script>
+  <script src="cursor.js"></script>
+</body>
+</html>
+
