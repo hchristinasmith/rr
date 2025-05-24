@@ -1,0 +1,239 @@
+/* Header and Navigation Styles */
+header {
+    background-color: #ffffff;
+    padding: 0;
+    border-bottom: 5px solid #3d3d3d;
+    border-top: 5px solid #3d3d3d;
+    position: fixed;
+    width: 100vw;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 0;
+}
+
+nav {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-origin: top center;
+}
+
+.logo {
+    text-align: center;
+    white-space: nowrap;
+    margin-bottom: 0;
+    padding-bottom: 0.2rem;
+    padding-top: 0.5rem;
+    width: 100%;
+    position: relative;
+}
+
+.logo a {
+    font-size: 1.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    font-style: normal;
+    color: #1a1a1a;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.nav-container {
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 0.2rem 2rem 0;
+    position: relative;
+}
+
+.left-nav, .right-nav {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    white-space: nowrap;
+}
+
+.left-nav {
+    justify-content: flex-end;
+}
+
+.right-nav {
+    justify-content: flex-start;
+}
+
+.left-nav a, 
+.right-nav a,
+.nav-icon {
+    color: #1a1a1a;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.left-nav a:hover, 
+.right-nav a:hover,
+.nav-icon:hover {
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+/* Scroll behavior */
+nav.scrolled {
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
+    padding: 0.5rem 2rem;
+}
+
+nav.scrolled .logo {
+    margin: 0;
+    padding: 0;
+    width: auto;
+    border-top: none;
+    transform: translateX(0) !important;
+}
+
+/* Remove the decorative elements */
+.logo::before,
+.logo::after {
+    display: none;
+}
+
+nav.scrolled .nav-container {
+    display: flex;
+    width: auto;
+    margin-left: 2rem;
+    margin-right: 0;
+    padding: 0;
+}
+
+nav.scrolled .left-nav,
+nav.scrolled .right-nav {
+    display: flex;
+    gap: 2rem;
+    margin: 0;
+}
+
+/* Digital flower */
+.digital-flower {
+    width: 30px;
+    height: 30px;
+    margin: 0 1rem;
+    opacity: 0.7;
+    animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Add transition properties */
+.logo, .nav-container {
+    transition: all 2s cubic-bezier(0.4, 0, 0.2, 1),
+                transform 2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Initial states */
+.logo {
+    transform: translateY(0);
+}
+
+.nav-container {
+    transform: translateX(0);
+}
+
+/* Cart and Account styles */
+.cart-container,
+.account-container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.cart-count {
+    font-size: 0.7rem;
+    background: #3d3d3d;
+    color: #ffffff;
+    padding: 0.2rem 0.4rem;
+    border-radius: 50%;
+    position: absolute;
+    top: -5px;
+    right: -8px;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .nav-container {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .left-nav, .right-nav {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .left-nav, .right-nav {
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    .logo a {
+        font-size: 1.5rem;
+    }
+}
+
+/* Footer Styles */
+footer {
+    background-color: #3d3d3d;
+    color: #fff;
+    padding: 3rem 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h4 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.footer-section a:hover {
+    opacity: 1;
+} 

@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arthur's Innocence | Natural Fibre Clothing</title>
+    <link rel="stylesheet" href="styles/shared.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Times New Roman', Times, serif;
+            cursor: default;
+        }
+
+        body {
+            background-color: #ffffff;
+            color: #1a1a1a;
+            padding-top: 80px;
+        }
+
+        /* Remove all header, nav, logo styles since they're now in shared.css */
+
+        .hero {
+            height: 90vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            overflow: hidden;  /* Ensure video doesn't overflow */
+        }
+
+        .hero video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translateX(-50%) translateY(-50%);
+            z-index: 0;
+            object-fit: cover;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.2);
+            backdrop-filter: saturate(0.7);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            font-weight: bold;
+            letter-spacing: 3px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 1px;
+        }
+
+        .location-tag {
+            font-size: 1rem;
+            margin-bottom: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            position: relative;
+            padding: 1.2rem 3rem;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            background: #ffffff;
+            color: #1a1a1a;
+            border: 5px solid #3d3d3d;
+            cursor: none;
+            overflow: visible;
+            z-index: 1;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            color: #ffffff;
+            background: #3d3d3d;
+            border-color: #ffffff;
+        }
+
+        .flower-cursor {
+            display: none;
+        }
+
+        .cta-button:hover + .flower-cursor {
+            opacity: 1;
+        }
+
+        .featured {
+            max-width: 1400px;
+            margin: 6rem auto;
+            padding: 0 1.5rem;
+        }
+
+        .featured h2 {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: normal;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            text-transform: none;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .product-card {
+            background: #ffffff;
+            transition: transform 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem 0;
+            text-align: center;
+        }
+
+        .product-info h3 {
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .product-info p {
+            color: #666;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: normal;
+            color: #1a1a1a;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background-color: #3d3d3d;
+            color: #fff;
+            padding: 3rem 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section h4 {
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #fff;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 0.5rem;
+            }
+
+            .location-tag {
+                font-size: 0.9rem;
+            }
+        }
+
+        .left-nav a, 
+        .right-nav a,
+        .nav-icon,
+        .logo a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+        }
+
+        .left-nav a:hover, 
+        .right-nav a:hover,
+        .nav-icon:hover,
+        .logo a:hover {
+            text-decoration: none;
+            opacity: 0.8;
+        }
+
+        /* Override logo font size */
+        .logo a {
+            font-size: 1.8rem;
+            letter-spacing: 1.5px;
+        }
+
+        /* Remove any underline animations */
+        .left-nav a::after,
+        .right-nav a::after,
+        .nav-icon::after,
+        .logo a::after {
+            display: none;
+        }
+
+        .left-nav a:hover::after,
+        .right-nav a:hover::after,
+        .nav-icon:hover::after,
+        .logo a:hover::after {
+            display: none;
+        }
+
+        /* Update info sections styling */
+        .info-sections {
+            padding: 6rem 2rem;
+            background-color: #f9f9f9;
+        }
+
+        .info-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .info-card {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: #3d3d3d;
+            background-color: #ffffff;
+            border: 5px solid #3d3d3d;
+        }
+
+        .info-card::before {
+            display: none;
+        }
+
+        .info-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.1;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .info-card h2 {
+            font-size: 1.8rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            color: #3d3d3d;
+        }
+
+        .info-card p {
+            color: #3d3d3d;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+            max-width: 80%;
+        }
+
+        .info-link {
+            display: inline-block;
+            text-decoration: none;
+            color: #3d3d3d;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            border-bottom: 1px solid #3d3d3d;
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .info-link:hover {
+            opacity: 0.7;
+            transform: translateY(-2px);
+        }
+
+        /* Update Traceability Section Styles */
+        .traceability-section {
+            padding: 6rem 2rem;
+            position: relative;
+            background: #ffffff; /* Changed from background-image to white */
+            color: #3d3d3d; /* Changed to dark grey */
+        }
+
+        .traceability-section::before {
+            display: none; /* Remove dark overlay */
+        }
+
+        .traceability-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            border: 5px solid #3d3d3d; /* Added dark grey border */
+            padding: 4rem; /* Added padding */
+        }
+
+        .traceability-text {
+            padding: 2rem;
+        }
+
+        .traceability-text h2 {
+            font-size: 2.2rem;
+            font-weight: normal;
+            margin-bottom: 1.5rem;
+            letter-spacing: 2px;
+            color: #3d3d3d; /* Changed to dark grey */
+        }
+
+        .traceability-text p {
+            color: #3d3d3d; /* Changed to dark grey */
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .trace-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            color: #3d3d3d; /* Changed to dark grey */
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid #3d3d3d; /* Changed to dark grey */
+        }
+
+        .trace-button:hover {
+            background-color: #3d3d3d;
+            color: #ffffff;
+        }
+
+        .traceability-image {
+            position: relative;
+            height: 500px;
+            overflow: hidden;
+            border: none; /* Removed border since container has border */
+        }
+
+        .traceability-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+            opacity: 0.1; /* Made image faint like info cards */
+        }
+
+        .traceability-image:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Update responsive styles */
+        @media (max-width: 968px) {
+            .traceability-section {
+                padding: 4rem 1rem;
+            }
+
+            .traceability-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .traceability-text {
+                text-align: center;
+                padding: 1rem;
+            }
+
+            .traceability-image {
+                height: 400px;
+                order: -1;
+            }
+        }
+
+        /* Custom cursor styles */
+        a, button, .cta-button, .info-link, .trace-button {
+            cursor: pointer; /* Changes to pointing hand on interactive elements */
+        }
+
+        /* Custom cursor for images and video */
+        img, video {
+            cursor: none; /* Hides cursor on media elements */
+        }
+
+        /* Add custom cursor for text elements */
+        p, h1, h2, h3, h4 {
+            cursor: text; /* Text cursor for text elements */
+        }
+
+        /* Update the hover-effect class and SVG sleeping dog cursor */
+        .hover-effect {
+            position: fixed;
+            width: 60px;  /* Increased size for the dog */
+            height: 60px;
+            pointer-events: none;
+            z-index: 9999;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .hover-effect::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            height: 100%;
+            transform: translate(-50%, -50%);
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='%233d3d3d'%3E%3Cpath d='M30 60 C40 50, 60 50, 70 60 C75 65, 75 70, 70 75 C60 85, 40 85, 30 75 C25 70, 25 65, 30 60 Z'/%3E%3Ccircle cx='40' cy='70' r='3'/%3E%3Ccircle cx='60' cy='70' r='3'/%3E%3Cpath d='M45 75 Q50 78 55 75' stroke='%233d3d3d' fill='none' stroke-width='2'/%3E%3C/g%3E%3Cg fill='none' stroke='%233d3d3d' stroke-width='2'%3E%3Cpath d='M75 40 L85 30 M80 40 L90 30 M85 40 L95 30' class='zzz'/%3E%3C/g%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.7;
+        }
+
+        /* Add floating ZZZ animation */
+        @keyframes floatingZzz {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+            50% {
+                transform: translate(-50%, -50%) scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.7;
+            }
+        }
+
+        .hover-effect.active::before {
+            animation: floatingZzz 2s infinite ease-in-out;
+        }
+
+        /* Products Section Styles */
+        .products-section {
+            padding: 6rem 2rem;
+            background-color: #ffffff;
+        }
+
+        .products-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .products-container h2 {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-image-container {
+            position: relative;
+            padding-bottom: 125%; /* 4:5 aspect ratio */
+            overflow: hidden;
+        }
+
+        .product-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1rem 0;
+            text-align: center;
+        }
+
+        .product-name {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+
+        .product-price {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Moon Phase Styles */
+        .moon-phase,
+        .moon-icon,
+        .moon-text,
+        .moon-new::before,
+        .moon-waxing-crescent::before,
+        .moon-first-quarter::before,
+        .moon-waxing-gibbous::before,
+        .moon-full::before,
+        .moon-waning-gibbous::before,
+        .moon-last-quarter::before,
+        .moon-waning-crescent::before {
+            display: none;
+        }
+
+        .digital-flower {
+            display: none;
+        }
+
+        /* Replace digital flower in nav with sleeping dog icon */
+        .sleeping-dog-icon {
+            width: 30px;
+            height: 30px;
+            margin: 0 1rem;
+            opacity: 0.7;
+        }
+
+        /* Remove cursor-related styles */
+        .hover-effect,
+        .hover-effect::before,
+        .flower-cursor,
+        .sleeping-dog-icon {
+            display: none;
+        }
+
+        /* Reset default cursors */
+        .cta-button {
+            cursor: pointer;
+        }
+
+        /* Remove custom cursor styles */
+        a, button, .cta-button, .info-link, .trace-button {
+            cursor: pointer;
+        }
+
+        img, video {
+            cursor: default;
+        }
+
+        p, h1, h2, h3, h4 {
+            cursor: default;
+        }
+
+        .sleeping-dog-logo {
+            width: 40px;
+            height: 24px;
+            margin: 0 1rem;
+            opacity: 0.7;
+        }
+
+        /* Animate the ZZZ's */
+        .zzz {
+            opacity: 0;
+            animation: snooze 3s infinite ease-in-out;
+        }
+
+        @keyframes snooze {
+            0%, 100% {
+                opacity: 0;
+                transform: translateY(0) translateX(0);
+            }
+            50% {
+                opacity: 1;
+                transform: translateY(-2px) translateX(2px);
+            }
+        }
+
+        /* Remove the previous digital-flower class */
+        .digital-flower {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html">Arthur's Innocence</a>
+            </div>
+            
+            <div class="nav-container">
+                <div class="left-nav">
+                    <a href="Tabs/shop.html">Shop</a>
+                    <a href="Tabs/pet-gallery.html">Pet Gallery</a>
+                    <a href="Tabs/our-story.html">Our Story</a>
+                    <a href="Tabs/our-process.html">Our Process</a>
+                </div>
+
+                <div class="right-nav">
+                    <svg class="sleeping-dog-logo" viewBox="0 0 100 60">
+                        <!-- Dog body -->
+                        <path d="M20 30 C30 10, 70 10, 80 30 C85 40, 85 50, 80 55 C70 65, 30 65, 20 55 C15 50, 15 40, 20 30" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="2"/>
+                        <!-- Ears -->
+                        <path d="M25 30 C20 25, 15 28, 20 32" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="2"/>
+                        <path d="M75 30 C80 25, 85 28, 80 32" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="2"/>
+                        <!-- Nose -->
+                        <ellipse cx="50" cy="45" rx="8" ry="5" 
+                                 fill="none" 
+                                 stroke="#3d3d3d" 
+                                 stroke-width="2"/>
+                        <!-- Closed eyes -->
+                        <path d="M35 35 Q40 38 45 35" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="2"/>
+                        <path d="M55 35 Q60 38 65 35" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="2"/>
+                        <!-- ZZZ's -->
+                        <path d="M75 15 L85 5 M80 15 L90 5 M85 15 L95 5" 
+                              fill="none" 
+                              stroke="#3d3d3d" 
+                              stroke-width="1.5"
+                              class="zzz"/>
+                    </svg>
+                    <div class="account-container">
+                        <a href="Tabs/account.html" class="nav-icon" title="Account"><i class="fas fa-user"></i></a>
+                        <a href="Tabs/account.html" class="account-text">Account</a>
+                    </div>
+                    <div class="cart-container">
+                        <a href="Tabs/cart.html" class="nav-icon" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+                        <a href="Tabs/cart.html" class="cart-text">Cart</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="Sabrina.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <h1>ARTHUR'S INNOCENCE</h1>
+            <p>Sustainable luxury for your beloved pets</p>
+            <p class="location-tag">Handmade in New Zealand</p>
+            <button class="cta-button">Shop Pet Beds</button>
+        </div>
+    </section>
+
+    <section class="info-sections">
+        <div class="info-container">
+            <div class="info-card">
+                <img src="our-story-bg.jpg" alt="Sustainable pet beds">
+                <h2>Our Story</h2>
+                <p>Discover how we transform pre-loved linens into luxurious pet beds.</p>
+                <a href="Tabs/our-story.html" class="info-link">Learn More</a>
+            </div>
+
+            <div class="info-card">
+                <img src="doing-our-best-bg.jpg" alt="Eco-friendly process">
+                <h2>Our Process</h2>
+                <p>Learn about our sustainable approach to creating comfortable pet beds from recycled materials.</p>
+                <a href="Tabs/our-process.html" class="info-link">Learn More</a>
+            </div>
+
+            <div class="info-card">
+                <img src="natural-energy-bg.jpg" alt="Pet comfort">
+                <h2>Shop All</h2>
+                <p>Browse our complete collection of sustainable pet beds.</p>
+                <a href="Tabs/shop.html" class="info-link">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="traceability-section">
+        <div class="traceability-content">
+            <div class="traceability-text">
+                <h2>From Linen to Luxury</h2>
+                <p>Each of our pet beds tells a story of renewal. The outer covers are crafted from reclaimed bed linens, while the plush inner filling is created from carefully processed recycled towels. This thoughtful approach not only provides ultimate comfort for your pets but also gives new life to textiles that would otherwise go to waste.</p>
+                <a href="Tabs/from-bed-to-body.html" class="trace-button">Our Process</a>
+            </div>
+            <div class="traceability-image">
+                <img src="traceability-bg.jpg" alt="Sustainable pet bed crafting">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>About</h4>
+                <ul>
+                    <li><a href="Tabs/our-story.html">Our Story</a></li>
+                    <li><a href="Tabs/our-process.html">Our Process</a></li>
+                    <li><a href="Tabs/sustainability.html">Sustainability</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Help</h4>
+                <ul>
+                    <li><a href="Tabs/shipping.html">Shipping</a></li>
+                    <li><a href="Tabs/returns.html">Returns</a></li>
+                    <li><a href="Tabs/size-guide.html">Size Guide</a></li>
+                    <li><a href="Tabs/care-instructions.html">Care Instructions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@arthursinnocence.com">info@arthursinnocence.com</a></li>
+                    <li><a href="tel:+1234567890">+1 (234) 567-890</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Social</h4>
+                <ul>
+                    <li><a href="https://instagram.com/arthursinnocence">Instagram</a></li>
+                    <li><a href="https://pinterest.com/arthursinnocence">Pinterest</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module">
+        // Remove unused product imports
+        // import products from './products.js';
+        // import { renderProducts } from './productRenderer.js';
+
+        // Keep scroll behavior
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const header = document.querySelector('header');
+            const logo = document.querySelector('.logo');
+            const scrollPosition = window.scrollY;
+            const maxScroll = 100;
+
+            if (scrollPosition <= maxScroll) {
+                // Calculate vertical and horizontal position based on scroll
+                const progress = scrollPosition / maxScroll;
+                const moveDownAmount = scrollPosition * 0.5;
+                const moveLeftAmount = 0; // Remove horizontal movement
+                
+                // Apply the transform directly based on scroll position
+                logo.style.transform = `translate(0, ${moveDownAmount}px)`;
+                
+                if (scrollPosition === maxScroll) {
+                    nav.classList.add('scrolled');
+                    header.classList.add('scrolled');
+                }
+            } else {
+                logo.style.transform = `translate(0, ${maxScroll * 0.5}px)`;
+                nav.classList.add('scrolled');
+                header.classList.add('scrolled');
+            }
+
+            if (scrollPosition === 0) {
+                nav.classList.remove('scrolled');
+                header.classList.remove('scrolled');
+                logo.style.transform = 'translate(0, 0)';
+            }
+        });
+
+        // Remove all cursor-related event listeners and animations
+    </script>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                nav.classList.add('scrolled');
+                header.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>
