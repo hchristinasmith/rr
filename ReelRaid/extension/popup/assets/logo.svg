@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="512px" height="512px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>App Store@2x</title>
+    <defs>
+        <linearGradient x1="91.3541733%" y1="50%" x2="5.71936018%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#D6C8FF" offset="0%"></stop>
+            <stop stop-color="#BABEFF" offset="56.4582041%"></stop>
+            <stop stop-color="#9EB4FF" offset="100%"></stop>
+        </linearGradient>
+        <path d="M91.6120412,93.860905 C135.376426,97.8471885 167.077713,97.8471885 186.715903,93.860905 C216.173189,87.8814797 252.731348,63.2633141 258.723964,63.2633141 C264.716581,63.2633141 303.271416,87.8814797 330.191003,93.860905 C348.137394,97.8471885 378.544317,97.8471885 421.411772,93.860905 C410.563955,223.593512 397.270822,305.752306 381.532374,340.337286 C357.924701,392.214756 257,448.878629 258.723964,448.878629 C260.447929,448.878629 164.171639,399.570612 131.432831,340.337286 C109.606958,300.848402 96.3333619,218.689608 91.6120412,93.860905 Z" id="path-2"></path>
+        <filter x="-35.3%" y="-29.4%" width="171.1%" height="162.3%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="23" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="26.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.91372549   0 0 0 0 0.937254902   0 0 0 0 1  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="22.505295%" y1="95.7225305%" x2="81.1394215%" y2="21.1569323%" id="linearGradient-4">
+            <stop stop-color="#CDDBFF" offset="0%"></stop>
+            <stop stop-color="#A4B6FF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="App-Store" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#FFFFFF" x="0" y="0" width="512" height="512"></rect>
+        <rect id="Rectangle" stroke="#979797" fill="#D6C8FF" x="0.5" y="0.5" width="511" height="511"></rect>
+        <g id="Path">
+            <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+            <use stroke="#E9EFFF" stroke-width="34" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+        </g>
+        <path d="M258.656227,80.8786292 C260.490733,80.8786292 266.046784,84.3346471 273.434935,88.1427392 C287.813486,95.5539099 307.809573,105.769611 323.58402,109.298948 C339.593466,112.880863 367.211766,113.194607 406.463209,110.050507 C394.234303,225.985209 381.186994,299.698796 367.010922,331.077098 C348.741725,371.515407 279.082784,414.804875 260.289965,426.618502 C259.653966,427.018306 259.066769,427.39212 258.529754,427.737861 C258.257317,427.577946 257.971355,427.410776 257.67209,427.236549 C240.497528,417.237792 171.612742,377.449554 145.939067,330.661043 C126.335303,294.934529 112.976428,221.308548 105.370399,109.990673 C146.321574,113.191888 175.564292,112.911357 193.118874,109.322095 C210.969807,105.67224 231.586151,94.8863611 245.715677,87.425088 C252.206475,83.9975412 256.954685,80.8786292 258.656227,80.8786292 Z" id="Path" stroke="url(#linearGradient-4)" stroke-width="12"></path>
+    </g>
+</svg>

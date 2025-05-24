@@ -1,0 +1,46 @@
+{
+  "manifest_version": 3,
+  "name": "UNREEL!",
+  "version": "1.0",
+  "description": "Slay Reels and Stories from social media sites. Reclaim your time.",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": "popup/assets/logo.svg"
+  },
+
+  "icons": {
+    "16": "popup/assets/16.png",
+    "48": "popup/assets/48.png",
+    "128": "popup/assets/128.png"
+  },
+
+  "content_scripts": [
+  {
+    "matches": [
+      "https://www.facebook.com/*",
+      "https://www.instagram.com/*",
+      "https://www.youtube.com/*",
+      "https://www.snapchat.com/*"
+    ],
+    "js": ["content.js"],
+    "run_at": "document_end"
+  }
+],
+  "host_permissions": [
+    "https://www.facebook.com/*",
+    "https://www.instagram.com/*",
+    "https://www.youtube.com/*",
+    "https://www.snapchat.com/*"
+  ],
+  "web_accessible_resources": [{
+    "resources": ["popup/assets/*.svg"],
+    "matches": ["<all_urls>"]
+  }]
+}

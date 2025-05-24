@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Black square background -->
-  <rect width="200" height="200" fill="black" />
-  
-  <!-- White heart -->
-  <path d="M100 170C97.5 170 95.1 169.2 93 167.5C56.5 136.5 35 117.6 35 93C35 73.5 50.5 58 70 58C82.4 58 94.1 64.4 100 74.5C105.9 64.4 117.6 58 130 58C149.5 58 165 73.5 165 93C165 117.6 143.5 136.5 107 167.5C104.9 169.2 102.5 170 100 170Z" fill="white" />
-</svg>
